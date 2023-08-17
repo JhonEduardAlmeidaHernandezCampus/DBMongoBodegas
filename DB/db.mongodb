@@ -1,0 +1,278 @@
+use("db_campus_bodegas");
+db.createCollection("users", {
+    capped: true,
+    size: 1980,
+    max: 10,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "nombre", "email", "estado", "created_by", "update_by", "foto", "password"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id'"
+                },
+                nombre: {
+                    bsonType: "string",
+                    maxLength: 60,
+                    description: "Error en la entrada del dato 'nombre'"
+                },
+                email: {
+                    bsonType: "string",
+                    maxLength: 60,
+                    pattern: "[a-zA-Z0-9+@\.]+$",
+                    description: "Error en la entrada del dato 'email'"
+                },
+                estado: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'estado'"
+                },
+                created_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'created_by'"
+                },
+                update_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'update_by'"
+                },
+                foto: {
+                    bsonType: "string",
+                    maxLength: 200,
+                    description: "Error en la entrada del dato 'foto'"
+                },
+                password: {
+                    bsonType: "string",
+                    maxLength: 15,
+                    description: "Error en la entrada del dato 'password'"
+                },
+            }
+        }
+    }
+});
+
+use("db_campus_bodegas");
+db.createCollection("productos", {
+    capped: true,
+    size: 1980,
+    max: 10,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "nombre", "descripcion", "estado", "Id_created_by", "Id_update_by"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id'"
+                },
+                nombre: {
+                    bsonType: "string",
+                    maxLength: 60,
+                    description: "Error en la entrada del dato 'nombre'"
+                },
+                descripcion: {
+                    bsonType: "string",
+                    maxLength: 60,
+                    pattern: "[a-zA-Z\s]+$",
+                    description: "Error en la entrada del dato 'descripcion'"
+                },
+                estado: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'estado'"
+                },
+                Id_created_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'created_by'"
+                },
+                Id_update_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'update_by'"
+                }
+            }
+        }
+    }
+});
+
+use("db_campus_bodegas");
+db.createCollection("bodegas", {
+    capped: true,
+    size: 1980,
+    max: 10,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "nombre", "Id_responsable", "estado", "Id_created_by", "Id_update_by"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id'"
+                },
+                nombre: {
+                    bsonType: "string",
+                    maxLength: 60,
+                    description: "Error en la entrada del dato 'nombre'"
+                },
+                Id_responsable: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_responsable'"
+                },
+                estado: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'estado'"
+                },
+                Id_created_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'created_by'"
+                },
+                Id_update_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'update_by'"
+                }
+            }
+        }
+    }
+});
+
+use("db_campus_bodegas");
+db.createCollection("inventarios", {
+    capped: true,
+    size: 1980,
+    max: 10,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "id_bodega", "id_producto", "cantidad", "Id_created_by", "Id_update_by"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id'"
+                },
+                id_bodega: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_bodega'"
+                },
+                id_producto: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_producto'"
+                },
+                cantidad: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'cantidad'"
+                },
+                Id_created_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'created_by'"
+                },
+                Id_update_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'update_by'"
+                }
+            }
+        }
+    }
+});
+
+use("db_campus_bodegas");
+db.createCollection("historiales", {
+    capped: true,
+    size: 1980,
+    max: 10,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "cantidad", "id_bodega_origen", "id_bodega_destino", "id_inventario", "Id_created_by", "Id_update_by"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id'"
+                },
+                cantidad: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'cantidad'"
+                },
+                id_bodega_origen: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_bodega_origen'"
+                },
+                id_bodega_destino: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_bodega_destino'"
+                },
+                id_inventario: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'id_inventario'"
+                },
+                Id_created_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'Id_created_by'"
+                },
+                Id_update_by: {
+                    bsonType: "int",
+                    description: "Error en la entrada del dato 'Id_update_by'"
+                }
+            }
+        }
+    }
+});
+
+use("db_campus_bodegas")
+db.users.insertOne(
+    {
+        id: 1,
+        nombre: "Jhon Eduard Almeida",
+        email: "jhonhernandez@gmail.com",
+        estado: 1,
+        created_by: 1,
+        update_by: 2,
+        foto: "null",
+        password: "123asd"
+    }
+)
+
+use("db_campus_bodegas")
+db.productos.insertOne(
+    {
+        id: 1,
+        nombre: "Pera de alemania",
+        descripcion: "Pera Jugosa",
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    }
+)
+
+use("db_campus_bodegas")
+db.bodegas.insertOne(
+    {
+        id: 1,
+        nombre: "Bodega la perla",
+        Id_responsable: 1,
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    }
+)
+
+use("db_campus_bodegas")
+db.inventarios.insertOne(
+    {
+        id: 1,
+        id_bodega: 1,
+        id_producto: 1,
+        cantidad: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    }
+)
+
+use("db_campus_bodegas")
+db.historiales.insertOne(
+    {
+        id: 1,
+        cantidad: 1,
+        id_bodega_origen: 1,
+        id_bodega_destino: 1,
+        id_inventario: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    }
+)
