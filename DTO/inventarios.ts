@@ -12,13 +12,18 @@ export class Inventarios {
                                 if(Math.floor(value) && typeof value == "number") return Math.floor(value); else throw {status: 400, message: `Error en los parametros`};}, {toClassOnly: true})
     id_bodega: number;
 
+    @Expose({name: "ID_Winery_Destiny"})
+    @Transform(({value}) => {   if (value === undefined || value === null) {throw { status: 422, message: `ID_Winery is required` }}
+                                if(Math.floor(value) && typeof value == "number") return Math.floor(value); else throw {status: 400, message: `Error en los parametros`};}, {toClassOnly: true})
+    id_bodega_destino: number;
+
     @Expose({name: "ID_Product"})
     @Transform(({value}) => {   if (value === undefined || value === null) {throw { status: 422, message: `ID_Product is required` }}
                                 if(Math.floor(value) && typeof value == "number") return Math.floor(value); else throw {status: 400, message: `Error en los parametros`};}, {toClassOnly: true})
     id_producto: number;
 
-    @Expose({name: "ID_Count"})
-    @Transform(({value}) => {   if (value === undefined || value === null) {throw { status: 422, message: `ID_Count is required` }}
+    @Expose({name: "Count"})
+    @Transform(({value}) => {   if (value === undefined || value === null) {throw { status: 422, message: `Count is required` }}
                                 if(Math.floor(value) && typeof value == "number") return Math.floor(value); else throw {status: 400, message: `Error en los parametros`};}, {toClassOnly: true})
     cantidad: number;
 
@@ -36,6 +41,7 @@ export class Inventarios {
         Object.assign(this, data)
         this.id = 0;
         this.id_bodega = 0;
+        this.id_bodega_destino = 0;
         this.id_producto = 0;
         this.cantidad = 0;
         this.Id_created_by = 0;
