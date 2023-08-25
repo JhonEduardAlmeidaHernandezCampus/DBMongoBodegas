@@ -9,7 +9,13 @@ let db = await con();
 storageBodegas.get("/", limit(), validarEstructura, async(req, res) => {
     try {
         let tabla = db.collection("bodegas")
-        let data = await tabla.find().toArray();
+        let data = await tabla.aggregate([
+            {
+                $sort: {
+                    "nombre": +1
+                }
+            }
+        ]).toArray();
 
         res.send(data)
 
