@@ -48,7 +48,7 @@ generarToken.post("/:clase", async(req, res) => {
 
 validarToken.use("/", async(req, res, next) => {
     const { authorization } = req.headers;
-    if(!authorization) return res.send({status: 400, message: "Token no enviano"})
+    if(!authorization) return res.send({status: 400, message: "Token no enviado"})
     try {
         const encoder = new TextEncoder();
         const jwtData = await jwtVerify(
