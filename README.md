@@ -326,23 +326,17 @@ Este EndPoint permite agregar un inventario nuevo.
 
 **Parámetros de entrada:**
 
-- `ID` : ID del inventario**"Number"**.
-- `ID_Winery`: ID de la bodega **"String"**.
-- `ID_Product` : ID del producto **"String"**.
-- `ID_Count`: Cantidad de producto **"Number"**.
-- `created_By`: Registro creado por **"Number"**.
-- `update_By`: Registro actualizado por **"Number"**.
+- `ID_Product` : ID del producto **"Number"**.
+- `ID_Winery`: ID de la bodega de origen **"Number"**.
+- `Count`: Cantidad de producto **"Number"**.
 
 **Ejemplo:**
 
 ```
 {
-    ID: 1,
-    ID_Winery: 1,
-    ID_Product: 1,
-    ID_Count: 1,
-    created_By: 1,
-    update_By: 1,
+  "ID_Product": 1,
+  "ID_Winery": 1,
+  "Count": 3
 }
 ```
 
@@ -356,23 +350,19 @@ Este EndPoint permite actualizar los campos de la tabla de inventarios.
 
 **Parámetros de entrada:**
 
-- `ID` : ID del inventario**"Number"**.
-- `ID_Winery`: ID de la bodega **"String"**.
-- `ID_Product` : ID del producto **"String"**.
-- `ID_Count`: Cantidad de producto **"Number"**.
-- `created_By`: Registro creado por **"Number"**.
-- `update_By`: Registro actualizado por **"Number"**.
+- `ID_Product` : ID del producto **"Number"**.
+- `ID_Winery`: ID de la bodega de origen **"Number"**.
+- `ID_Winery_Destiny`: ID de la bodega de destino **"Number"**.
+- `Count`: Cantidad de producto **"Number"**.
 
 **Ejemplo:**
 
 ```
 {
-    ID: 1,
-    ID_Winery: 1,
-    ID_Product: 1,
-    ID_Count: 1,
-    created_By: 1,
-    update_By: 1,
+  "ID_Product": 1,
+  "ID_Winery": 1,
+  "ID_Winery_Destiny": 2,
+  "Count": 3
 }
 ```
 
