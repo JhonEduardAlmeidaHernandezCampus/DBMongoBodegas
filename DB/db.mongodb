@@ -1,8 +1,5 @@
 use("db_campus_bodegas");
 db.createCollection("users", {
-    capped: true,
-    size: 1980,
-    max: 10,
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -52,9 +49,6 @@ db.createCollection("users", {
 
 use("db_campus_bodegas");
 db.createCollection("productos", {
-    capped: true,
-    size: 1980,
-    max: 10,
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -94,9 +88,6 @@ db.createCollection("productos", {
 
 use("db_campus_bodegas");
 db.createCollection("bodegas", {
-    capped: true,
-    size: 1980,
-    max: 10,
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -134,9 +125,6 @@ db.createCollection("bodegas", {
 
 use("db_campus_bodegas");
 db.createCollection("inventarios", {
-    capped: true,
-    size: 1980,
-    max: 10,
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -173,9 +161,6 @@ db.createCollection("inventarios", {
 
 use("db_campus_bodegas");
 db.createCollection("historiales", {
-    capped: true,
-    size: 1980,
-    max: 10,
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -229,40 +214,128 @@ db.users.insertOne(
 )
 
 use("db_campus_bodegas")
-db.productos.insertOne(
+db.productos.insertMany([
     {
         id: 1,
         nombre: "Pera de alemania",
+        descripcion: "Pera de alemania Jugosa",
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 2,
+        nombre: "Piña",
+        descripcion: "Piña Jugosa",
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 3,
+        nombre: "Manzana",
+        descripcion: "Manzana Jugosa",
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 4,
+        nombre: "Pera",
         descripcion: "Pera Jugosa",
         estado: 1,
         Id_created_by: 1,
         Id_update_by: 2
     }
-)
+])
 
 use("db_campus_bodegas")
-db.bodegas.insertOne(
+db.bodegas.insertMany([
     {
         id: 1,
+        nombre: "Bodega doña carlota",
+        Id_responsable: 1,
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 2,
+        nombre: "Bodega la quinta",
+        Id_responsable: 1,
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 3,
         nombre: "Bodega la perla",
         Id_responsable: 1,
         estado: 1,
         Id_created_by: 1,
         Id_update_by: 2
+    },
+    {
+        id: 4,
+        nombre: "Bodega la zoo",
+        Id_responsable: 1,
+        estado: 1,
+        Id_created_by: 1,
+        Id_update_by: 2
     }
-)
+])
 
 use("db_campus_bodegas")
-db.inventarios.insertOne(
+db.inventarios.insertMany([
     {
         id: 1,
         id_bodega: 1,
         id_producto: 1,
-        cantidad: 1,
+        cantidad: 10,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 2,
+        id_bodega: 1,
+        id_producto: 2,
+        cantidad: 5,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 3,
+        id_bodega: 3,
+        id_producto: 3,
+        cantidad: 3,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 4,
+        id_bodega: 4,
+        id_producto: 4,
+        cantidad: 10,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 5,
+        id_bodega: 2,
+        id_producto: 2,
+        cantidad: 20,
+        Id_created_by: 1,
+        Id_update_by: 2
+    },
+    {
+        id: 6,
+        id_bodega: 1,
+        id_producto: 3,
+        cantidad: 60,
         Id_created_by: 1,
         Id_update_by: 2
     }
-)
+])
 
 use("db_campus_bodegas")
 db.historiales.insertOne(
